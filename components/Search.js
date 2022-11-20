@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export default function Search({ data, filter, updateFilter }) {
   return (
-    <section className="px-10 flex justify-between">
+    <section className="px-10 flex justify-between mb-10">
       <div className="flex content-center gap-2 shadow-md p-3">
         <AiOutlineSearch className="w-1/2" />
         <input

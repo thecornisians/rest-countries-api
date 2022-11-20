@@ -2,6 +2,7 @@ import Head from "next/head";
 import Search from "../components/Search";
 import { useState, useEffect } from "react";
 import Countries from "../components/Countries";
+import Header from "../components/Header";
 
 export default function Home({ data, test }) {
   const [darkMode, setDarkMode] = useState(true);
@@ -25,6 +26,7 @@ export default function Home({ data, test }) {
 
   return (
     <div>
+      <Header />
       {data ? (
         <Search data={data} filter={filter} updateFilter={updateFilter} />
       ) : (
@@ -46,7 +48,10 @@ export default function Home({ data, test }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch("https://restcountries.com/v2/all")
+  const res = await fetch(
+    "https://restcountries.com/v2/all?fields=name,population,region,capital,flag"
+  )
+    // https://restcountries.com/v3.1/all?fields=name,population,region,capital
     .then((res) => res.json())
     .catch((error) => console.log(error));
 
