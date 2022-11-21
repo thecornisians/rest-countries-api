@@ -3,7 +3,7 @@ import CountryCard from "./CountryCard";
 
 export default function Countries({ countries }) {
   return (
-    <section className=" grid grid-col-4">
+    <section className="flex flex-wrap justify-center container mx-auto gap-16 bg-gray-50">
       {countries.map((country, index) => (
         <CountryCard className="" key={country.name} countryData={country} />
       ))}

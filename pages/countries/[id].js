@@ -3,7 +3,6 @@
 function Page({ data }) {
   //   const router = useRouter();
   //   const { id } = router.query;
-  [{}];
 
   const { name, capital, population, subregion, flag } = data[0];
 
@@ -29,7 +28,6 @@ export async function getServerSideProps(context) {
     .then((res) => res.json())
     .catch((error) => console.log(error));
 
-  //   console.log(response);
   return {
     props: {
       data: response,

@@ -4,13 +4,14 @@ import { useState, useEffect } from "react";
 import Countries from "../components/Countries";
 import Header from "../components/Header";
 
-export default function Home({ data, test }) {
+export default function Home({ data }) {
   const [darkMode, setDarkMode] = useState(true);
-  const [filter, setFilter] = useState("");
   const [countries, setCountries] = useState([]);
+  const [filter, setFilter] = useState("");
   const [filteredCountries, setFilteredCountries] = useState([]);
 
   useEffect(() => {
+    //if data object is not empty, fill countries with data
     if (data) setCountries(data);
   }, []);
 
@@ -51,14 +52,12 @@ export async function getServerSideProps() {
   const res = await fetch(
     "https://restcountries.com/v2/all?fields=name,population,region,capital,flag"
   )
-    // https://restcountries.com/v3.1/all?fields=name,population,region,capital
     .then((res) => res.json())
     .catch((error) => console.log(error));
 
   return {
     props: {
       data: res,
-      test: "defined ",
     },
   };
 }
